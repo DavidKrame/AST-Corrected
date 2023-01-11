@@ -8,7 +8,7 @@ solar data： https://www.nrel.gov/grid/solar-power-data.html
 wind: https://www.kaggle.com/sohier/30-years-of-european-wind-generation 
 ## 2. Preprocess data
 To process the data, you must first type this 
-` python preprocess_data.py `
+` python preprocess_data.py `\n
 But you can skip this step and just use the reduced data I placed in the `/data/elect` directory
 
 ## 3. Train and evaluate the model
