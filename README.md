@@ -18,5 +18,5 @@ To run the training and see the behavior of the whole code before making any cha
 --model the position of the specific params.json file under the folder of "experiments".  
 
 ## 4. Illustration (Training-output)
-Output should look like this...  
-<video src='others/GithubVID1.mp4' width=180/>
+Output should look like this... 
+<img src="others/GithubVID1.gif"> 
