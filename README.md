@@ -19,4 +19,4 @@ To run the training and see the behavior of the whole code before making any cha
 
 ## 4. Illustration (Training-output)
 Output should look like this...  
-<image src="others/GithubVID1.mp4" type="video/mp4">
+<video src='others/GithubVID1.mp4' width=180/>
