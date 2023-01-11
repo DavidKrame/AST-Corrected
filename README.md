@@ -19,6 +19,4 @@ To run the training and see the behavior of the whole code before making any cha
 
 ## 4. Illustration (Training-output)
 Output should look like this...  
-<video width="320" height="240" controls>
-  <source src="others/GithubVID1.mp4" type="video/mp4">
-</video>
+<image src="others/GithubVID1.mp4" type="video/mp4">
