@@ -5,7 +5,7 @@
 "d_model" : 512,
 "N" : 8,
 "h" : 8,
-"attn_type" : "softmax",
+"attn_type" : "entmax15",
 "train_window" : 192,
 "device" : "cpu",
 "predict_start" : 0,

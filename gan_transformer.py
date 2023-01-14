@@ -8,6 +8,7 @@ from entmax import sparsemax, entmax15, entmax_bisect, EntmaxBisect
 import torch.nn.functional as F
 from torch.autograd import Variable
 import utils
+from sparsemax import Sparsemax
 
 import logging
 from torch.autograd import grad
@@ -263,6 +264,7 @@ class EntmaxAlphaBencher(object):
 
 
 def attention(query, key, value, params, mask=None, dropout=None, alpha=None):
+    sparse = Sparsemax(dim=-1)
     "Compute 'Scaled Dot Product Attention'"
     d_k = query.size(-1)
     scores = torch.matmul(query, key.transpose(-2, -1)) \
@@ -276,11 +278,15 @@ def attention(query, key, value, params, mask=None, dropout=None, alpha=None):
     if params.attn_type == 'softmax':
         p_attn = F.softmax(scores, dim=-1)
     elif params.attn_type == 'sparsemax':
-        p_attn = sparsemax(scores, dim=-1)
+        # p_attn = sparsemax(scores, dim=0)
+        try:
+            p_attn = sparse(scores)
+        except RuntimeError:
+            p_attn = scores
     elif params.attn_type == 'entmax15':
-        p_attn = entmax15(scores, dim=-1)
-    elif params.attn_type == 'entmax':
-        p_attn = EntmaxBisect(scores, alpha, n_iter=25)
+        p_attn = entmax15(scores, dim=0)
+    # elif params.attn_type == 'entmax':
+    #     p_attn = EntmaxBisect(scores, alpha, n_iter=25)
     else:
         raise Exception
     if dropout is not None:
