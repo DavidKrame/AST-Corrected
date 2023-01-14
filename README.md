@@ -2,7 +2,7 @@
 This repo is based on https://github.com/hihihihiwsf/AST repo with correction of some errors.
 
 ## 1. Download data
-electricity: https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams 20112014  
+electricity: https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams 
 traffic: https://archive.ics.uci.edu/ml/datasets/PEMS-SF  
 solar data： https://www.nrel.gov/grid/solar-power-data.html  
 wind: https://www.kaggle.com/sohier/30-years-of-european-wind-generation   
