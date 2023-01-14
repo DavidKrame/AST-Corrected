@@ -400,7 +400,7 @@ def test(model, params, x, v_batch, id_batch):
         sample_mu[:, t] = q50 * v_batch[:, 0] + v_batch[:, 1]
         sample_q90[:, t] = q90 * v_batch[:, 0]
         if t < (params.predict_steps - 1):
-            x[:, t+1, 0] = q50
+            x[:, params.predict_start+t+1, 0] = q50
 
         return sample_mu, sample_q90
 

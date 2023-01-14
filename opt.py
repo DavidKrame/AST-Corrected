@@ -103,7 +103,8 @@ class OpenAIAdam(Optimizer):
                         state['step']/group['t_total'], group['warmup'])
                 except ZeroDivisionError:
                     lr_scheduled = group['lr'] * \
-                        schedule_fct(state['step']/1, group['warmup'])
+                        schedule_fct(
+                            state['step']/0.001, group['warmup'])  # Modification to handler zero-div-error
                 step_size = lr_scheduled * \
                     math.sqrt(bias_correction2) / bias_correction1
 
