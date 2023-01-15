@@ -453,7 +453,7 @@ def loss_fn(mu: Variable, sigma: Variable, labels: Variable):
         likelihood = distribution.log_prob(labels_e)
         each_loss = -torch.mean(likelihood)
         loss += each_loss
-    return loss
+    return losses
 
 # if relative is set to True, metrics are not normalized by the scale of labels
 
