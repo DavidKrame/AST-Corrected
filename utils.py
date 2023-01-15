@@ -322,8 +322,10 @@ def get_metrics(sample_mu, labels, predict_start, samples=None, relative=False):
         0.9, sample_mu, labels[:, predict_start:], relative=relative)
     metric['Q50'] = transformer.accuracy_ROU_(
         0.5, sample_mu, labels[:, predict_start:], relative=relative)
-    #metric['q50'] = transformer.quantile_loss(0.5, sample_mu, labels[:, predict_start:])
-    #metric['q90'] = transformer.quantile_loss(0.9, sample_mu, labels[:, predict_start:])
+    metric['q50'] = transformer.quantile_loss(
+        0.5, sample_mu, labels[:, predict_start:])
+    metric['q90'] = transformer.quantile_loss(
+        0.9, sample_mu, labels[:, predict_start:])
     if samples is not None:
         metric['rou90'] = transformer.accuracy_ROU_(
             0.9, samples, labels[:, predict_start:], relative=relative)
@@ -345,8 +347,10 @@ def update_metrics(raw_metrics, sample_mu, labels, predict_start, samples=None, 
         0.9, sample_mu, labels[:, predict_start:], relative=relative)
     raw_metrics['Q50'] = raw_metrics['Q50'] + transformer.accuracy_ROU(
         0.5, sample_mu, labels[:, predict_start:], relative=relative)
-    #raw_metrics['q50'] = raw_metrics['q50'] + transformer.quantile_loss(0.5, sample_mu, labels[:, predict_start:])
-    #raw_metrics['q90'] = raw_metrics['q90'] + transformer.quantile_loss(0.9, sample_mu, labels[:, predict_start:])
+    raw_metrics['q50'] = raw_metrics['q50'] + \
+        transformer.quantile_loss(0.5, sample_mu, labels[:, predict_start:])
+    raw_metrics['q90'] = raw_metrics['q90'] + \
+        transformer.quantile_loss(0.9, sample_mu, labels[:, predict_start:])
     if samples is not None:
         raw_metrics['rou90'] = raw_metrics['rou90'] + transformer.accuracy_ROU(
             0.9, samples, labels[:, predict_start:], relative=relative)

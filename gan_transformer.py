@@ -286,7 +286,7 @@ def attention(query, key, value, params, mask=None, dropout=None, alpha=None):
     elif params.attn_type == 'entmax15':
         p_attn = entmax15(scores, dim=0)
     # elif params.attn_type == 'entmax':
-    #     p_attn = EntmaxBisect(scores, alpha, n_iter=25)
+    #     p_attn = entmax_bisect(scores, alpha=1.3, dim=0)
     else:
         raise Exception
     if dropout is not None:
@@ -412,14 +412,19 @@ def test(model, params, x, v_batch, id_batch):
 
 
 def loss_quantile(mu: Variable, labels: Variable, quantile: Variable):
+    # Here, I implemente a loss without division(KRM). I follow a definition who
+    # can be retrieve in the 14th article in AST article.
     loss = 0
     for i in range(mu.shape[1]):
         mu_e = mu[:, i]
         labels_e = labels[:, i]
 
-        I = (labels_e >= mu_e).float()
-        each_loss = 2*(torch.sum(quantile*((labels_e - mu_e)*I) +
-                       (1-quantile) * (mu_e - labels_e)*(1-I)))
+        I = (labels_e <= mu_e).float()
+        ones = torch.Tensor(size=I.shape)
+        for i in range(len(I)):
+            ones[i] = 1
+
+        each_loss = 2*(torch.sum((quantile*ones - I)*(labels_e-mu_e)))
         loss += each_loss
 
     return loss
@@ -506,11 +511,18 @@ def accuracy_ROU(rou: float, mu: torch.Tensor, labels: torch.Tensor, relative=Fa
 
 
 def quantile_loss(quantile: float, mu: torch.Tensor, labels: torch.Tensor):
-    #gaussian = torch.distributions.normal.Normal(mu, sigma)
-    #pred = gaussian.sample()
-    I = (labels >= mu).float()
-    diff = 2*(torch.sum(quantile*((labels-mu)*I) +
-              (1-quantile) * (mu-labels)*(1-I))).item()
+    # Now we implemente the complete quantile _loss function (with division like in
+    # the 14th AST's article)
+
+    I = (labels <= mu).float()
+    ones = torch.Tensor(size=I.shape)
+    for i in range(len(I)):
+        ones[i] = 1
+
+    diff = 2*(torch.sum((quantile*ones - I)*(labels-mu))).item()
+
+    # diff = 2*(torch.sum(quantile*((labels-mu)*I) +
+    #           (1-quantile) * (mu-labels)*(1-I))).item()
     denom = torch.sum(torch.abs(labels)).item()
     q_loss = diff/denom
     return q_loss
