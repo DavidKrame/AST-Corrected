@@ -2,6 +2,7 @@ import numpy as np
 import os
 
 dir = os.getcwd()
+
 dirTrain = "\\".join((dir, "data", "elect", "train_data_elect.npy"))
 dirTrainLab = "\\".join((dir, "data", "elect", "train_label_elect.npy"))
 dirTrainV = "\\".join((dir, "data", "elect", "train_v_elect.npy"))
@@ -25,7 +26,7 @@ outTestV = np.load(dirTestV)
 outValid = np.load(dirValid)
 outValidLab = np.load(dirValidLab)
 outValidV = np.load(dirValidV)
-# self.data[index, :, :-1], int(self.data[index, 0, -1]), self.label[index]
+
 print(f'TRAIN : {outTrain.shape}')
 print(f'TEST : {outTest.shape}')
 print(f'VALID : {outValid.shape}')
@@ -33,14 +34,15 @@ print(f'TRAIN-LABELS : {outTrainLab.shape}')
 print(f'TRAIN-V : {outTrainV.shape}')
 print(outTrainV)
 
+# Crop training data
 np.save('train_data_elect.npy', outTrain[:20, :, :])
 np.save('train_label_elect.npy', outTrainLab[:20, :])
 np.save('train_v_elect.npy', outTrainV[:20, :])
-
+# Crop testing data
 np.save('test_data_elect1.npy', outTest[:10, :, :])
 np.save('test_label_elect1.npy', outTestLab[:10, :])
 np.save('test_v_elect1.npy', outTestV[:10, :])
-
+# Crop validation data
 np.save('valid_data_elect1.npy', outValid[:10, :, :])
 np.save('valid_label_elect1.npy', outValidLab[:10, :])
 np.save('valid_v_elect1.npy', outValidV[:10, :])
