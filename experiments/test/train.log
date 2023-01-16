@@ -1,18 +1,18 @@
-[13:41:28] Transformer.Train: Loading the datasets...
-[13:41:28] Transformer.Data: train_len: 50
-[13:41:28] Transformer.Data: building datasets from data\elect...
-[13:41:28] Transformer.Data: valid_len: 10
-[13:41:28] Transformer.Data: building datasets from data\elect...
-[13:41:28] Transformer.Data: test_len: 10
-[13:41:28] Transformer.Data: building datasets from data\elect...
-[13:41:28] Transformer.Train: Loading complete.
-[13:41:28] Transformer.Train: Starting training for 1 epoch(s)
-[13:41:28] Transformer.Train: begin training and evaluation
-[13:41:28] Transformer.Train: My Transformer have 44885698 paramerters in total
-[13:41:28] Transformer.Train: Epoch 1/1
-[13:44:15] Transformer.Train: G_loss: 12.48455556233724 ; D_loss: 0.7007343769073486
-[13:46:36] Transformer.Eval: - Full test metrics: ND: 1.031; RMSE: 1.716; test_loss: 65520.000; Q90: 1.856; Q50: 1.031; q50: 1.031; q90: 1.002; MAPE: 103.775
-[13:47:11] Transformer.Eval: - Full test metrics: ND: 1.031; RMSE: 1.702; test_loss: 65398.458; Q90: 1.856; Q50: 1.031; q50: 1.031; q90: 1.002; MAPE: 103.221
-[13:47:15] Transformer.Utils: Checkpoint saved to experiments\test\epoch_0.pth.tar
-[13:47:23] Transformer.Utils: Best checkpoint copied to best.pth.tar
-[13:47:23] Transformer.Train: - Found new best Q90/Q50
+[07:54:17] Transformer.Train: Loading the datasets...
+[07:54:17] Transformer.Data: train_len: 50
+[07:54:17] Transformer.Data: building datasets from data\elect...
+[07:54:17] Transformer.Data: valid_len: 10
+[07:54:17] Transformer.Data: building datasets from data\elect...
+[07:54:17] Transformer.Data: test_len: 10
+[07:54:17] Transformer.Data: building datasets from data\elect...
+[07:54:17] Transformer.Train: Loading complete.
+[07:54:17] Transformer.Train: Starting training for 1 epoch(s)
+[07:54:17] Transformer.Train: begin training and evaluation
+[07:54:17] Transformer.Train: My Transformer have 44885698 paramerters in total
+[07:54:17] Transformer.Train: Epoch 1/1
+[07:58:06] Transformer.Train: G_loss: 9.541914621988932 ; D_loss: 0.6901001930236816
+[08:00:27] Transformer.Eval: - Full test metrics: ND: 1.012; RMSE: 1.582; test_loss: 64298.992; Q90: 1.821; Q50: 1.012; q50: 1.012; q90: 1.001; MAPE: 101.813
+[08:01:02] Transformer.Eval: - Full test metrics: ND: 1.012; RMSE: 1.568; test_loss: 64179.596; Q90: 1.822; Q50: 1.012; q50: 1.012; q90: 1.001; MAPE: 101.522
+[08:01:10] Transformer.Utils: Checkpoint saved to experiments\test\epoch_0.pth.tar
+[08:01:20] Transformer.Utils: Best checkpoint copied to best.pth.tar
+[08:01:20] Transformer.Train: - Found new best Q90/Q50
