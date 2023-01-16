@@ -78,7 +78,7 @@ def evaluate(model, test_loader, params, plot_num):
 
         summary_metric = utils.final_metrics(raw_metrics)
         summary_metric['q50'] = transformer.quantile_loss(0.5, sum_mu,  true)
-        summary_metric['q90'] = transformer.quantile_loss(0.5, sum_q90, true)
+        summary_metric['q90'] = transformer.quantile_loss(0.9, sum_q90, true)
         summary_metric['MAPE'] = transformer.MAPE(sum_mu, true)
         # summary_metric["loss"] = transformer.loss_fn()
 

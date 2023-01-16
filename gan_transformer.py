@@ -4,7 +4,7 @@ import copy
 import numpy as np
 import torch
 import torch.nn as nn
-from entmax import sparsemax, entmax15, entmax_bisect, EntmaxBisect
+from entmax import sparsemax, entmax15, entmax_bisect
 import torch.nn.functional as F
 from torch.autograd import Variable
 import utils
