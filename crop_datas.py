@@ -14,7 +14,6 @@ dirValid = "\\".join((dir, "data", "elect", "valid_data_elect.npy"))
 dirValidLab = "\\".join((dir, "data", "elect", "valid_label_elect.npy"))
 dirValidV = "\\".join((dir, "data", "elect", "valid_v_elect.npy"))
 
-
 outTrain = np.load(dirTrain)
 outTrainLab = np.load(dirTrainLab)
 outTrainV = np.load(dirTrainV)
