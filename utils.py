@@ -380,5 +380,5 @@ def final_metrics(raw_metrics, sampling=False):
 
 def tSNE(model):
     for name, params in model.named_parameters():
-        if isinstance(layer[1], transformer.Generator):
+        if isinstance(model.layer[1], transformer.Generator):
             embed()

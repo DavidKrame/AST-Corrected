@@ -239,7 +239,7 @@ class EntmaxAlphaBencher(object):
     def __enter__(self):
         self.X = self.X_data.clone().requires_grad_()
         self.dY = torch.randn_like(self.X)
-        self.alpha = alpha
+        self.alpha = self.alpha
         return self
 
     def forward(self):
@@ -452,25 +452,13 @@ def loss_fn(mu: Variable, sigma: Variable, labels: Variable):
         distribution = torch.distributions.normal.Normal(mu_e, sigma_e)
         likelihood = distribution.log_prob(labels_e)
         each_loss = -torch.mean(likelihood)
-        loss += each_loss
+        losses += each_loss
     return losses
 
 # if relative is set to True, metrics are not normalized by the scale of labels
 
 
 def accuracy_ND(mu: torch.Tensor, labels: torch.Tensor, relative=False):
-    zero_index = (labels != 0)
-    if relative:
-        diff = torch.mean(
-            torch.abs(mu[zero_index] - labels[zero_index])).item()
-        return [diff, 1]
-    else:
-        diff = torch.sum(torch.abs(mu[zero_index] - labels[zero_index])).item()
-        summation = torch.sum(torch.abs(labels[zero_index])).item()
-        return [diff, summation]
-
-
-def accuracy_MAPE(mu: torch.Tensor, labels: torch.Tensor, relative=False):
     zero_index = (labels != 0)
     if relative:
         diff = torch.mean(
