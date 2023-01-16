@@ -103,7 +103,7 @@ def train(model: nn.Module,
             # -------------------------------------------------------------------
             optimizer_G.zero_grad()
             loss = transformer.loss_quantile(q50, labels, torch.tensor(
-                0.5)) + 0.1 * adversarial_loss(discriminator(fake_input), valid)
+                0.5)) + float(params.learning_rate) * adversarial_loss(discriminator(fake_input), valid)
             loss.backward()
             optimizer_G.step()
             g_loss = loss.item() / params.train_window
@@ -123,7 +123,7 @@ def train(model: nn.Module,
             d_loss = loss_d.item()
             d_loss_epoch[i] = d_loss
 
-        if i % 1000 == 0:
+        if i % 100 == 0:
             logger.info("G_loss: {} ; D_loss: {}".format(g_loss, d_loss))
 
     return loss_epoch, d_loss_epoch
