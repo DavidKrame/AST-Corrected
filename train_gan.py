@@ -43,7 +43,7 @@ parser.add_argument('--gan', default="True",
                     help="Whether to train adversarially")
 parser.add_argument('--dropout', type=float, default=0.01)
 parser.add_argument('--save-best', action='store_true',
-                    help='Whether to save best ND to param_search.txt')
+                    help='Whether to save best q50 to param_search.txt')
 parser.add_argument('--restore-file', default=None,
                     help='Optional, name of the file in --model_dir containing weights to reload before training')
 
@@ -237,7 +237,7 @@ def train_and_evaluate(model: nn.Module,
             # save weights
             utils.save_checkpoint({'epoch': epoch + 1,
                                    'state_dict': model.state_dict(),
-                                   'optim_dict': optimizer.state_dict()},
+                                   'optim_dict': optimizer_G.state_dict()},  # Is it this ?
                                   filepath=params.model_dir)
             break
 
@@ -251,9 +251,12 @@ def train_and_evaluate(model: nn.Module,
             print_params += f'{param}: {param_value:.2f}'
         print_params = print_params[:-1]
         f.write(print_params + '\n')
-        f.write('Best ND: ' + str(best_test_ND) + '\n')
+        # f.write('Best ND: ' + str(best_test_ND) + '\n')
+        # logger.info(print_params)
+        # logger.info(f'Best ND: {best_test_ND}')
+        f.write('Best q50: ' + str(best_valid_q50) + '\n')
         logger.info(print_params)
-        logger.info(f'Best ND: {best_test_ND}')
+        logger.info(f'Best q50: {best_valid_q50}')
         f.close()
 
 
