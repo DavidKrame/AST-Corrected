@@ -2,3 +2,5 @@
 /experiments/test/best.pth.tar
 /experiments/test/epoch_0.pth.tar
 /data/elect_VRAI/
+/complete_data_elect.csv
+/new_elect_csv.csv
