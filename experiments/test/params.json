@@ -7,6 +7,8 @@
 "h" : 8,
 "attn_type" : "entmax15",
 "train_window" : 192,
+"stride_size" : 24,
+"num_covariates" : 3,
 "device" : "cpu",
 "predict_start" : 0,
 "learning_rate" : 0.05,
@@ -24,5 +26,6 @@
 "gan" : "True",
 "sampling" : "True",
 "test_predict_start" : 0,
-"relative_metrics" : "False"
+"relative_metrics" : "False",
+"ngpu" : 0
 }
