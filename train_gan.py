@@ -179,7 +179,7 @@ def train_and_evaluate(model: nn.Module,
     loss_test = np.zeros((test_len * params.num_epochs))
     d_loss_summary = np.zeros((train_len * params.num_epochs))
     valid_loss = []
-    logger.info("My Transformer have {} paramerters in total".format(
+    logger.info("This Transformer have {} paramerters in total".format(
         sum(x.numel() for x in model.parameters())))
     for epoch in range(params.num_epochs):
         logger.info('Epoch {}/{}'.format(epoch + 1, params.num_epochs))

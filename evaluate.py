@@ -86,6 +86,11 @@ def evaluate(model, test_loader, params, plot_num):
                                    for k, v in summary_metric.items())
 
         logger.info('- Full test metrics: ' + metrics_string)
+
+        # args = parser.parse_args()
+        # model_dir = os.path.join('experiments', args.model_folder)
+        # plot_eight_windows(model_dir, sum_mu, sum_mu, true,
+        #                    params.train_window, params.predict_start, 1, summary_metric)
     return summary_metric
 
 
@@ -122,8 +127,8 @@ def plot_eight_windows(plot_dir,
 
         plot_metrics_str = f'ND: {plot_metrics["ND"][m]: .3f} ' \
             f'RMSE: {plot_metrics["RMSE"][m]: .3f}' \
-            f'Q50: {plot_metrics["Q50"][m]:.3f}' \
-            f'Q90: {plot_metrics["Q90"][m]:.3f}'
+            f'Q50: {plot_metrics["q50"][m]:.3f}' \
+            f'Q90: {plot_metrics["q90"][m]:.3f}'
         if sampling:
             plot_metrics_str += f' rou90: {plot_metrics["rou90"][m]: .3f} ' \
                                 f'rou50: {plot_metrics["rou50"][m]: .3f}'

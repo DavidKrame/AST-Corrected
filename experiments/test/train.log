@@ -1,18 +1,14 @@
-[15:13:37] Transformer.Train: Loading the datasets...
-[15:13:37] Transformer.Data: train_len: 20
-[15:13:37] Transformer.Data: building datasets from data\elect...
-[15:13:38] Transformer.Data: valid_len: 10
-[15:13:38] Transformer.Data: building datasets from data\elect...
-[15:13:38] Transformer.Data: test_len: 10
-[15:13:38] Transformer.Data: building datasets from data\elect...
-[15:13:38] Transformer.Train: Loading complete.
-[15:13:38] Transformer.Train: Starting training for 1 epoch(s)
-[15:13:38] Transformer.Train: begin training and evaluation
-[15:13:38] Transformer.Train: My Transformer have 44885698 paramerters in total
-[15:13:38] Transformer.Train: Epoch 1/1
-[15:19:07] Transformer.Train: G_loss: 6.608503977457683 ; D_loss: 0.6988475322723389
-[15:23:58] Transformer.Eval: - Full test metrics: ND: 3.378; RMSE: 49.600; test_loss: 214617.567; Q90: 2.269; Q50: 3.378; q50: 3.378; q90: 1.807; MAPE: 385.167
-[15:24:48] Transformer.Eval: - Full test metrics: ND: 3.385; RMSE: 49.189; test_loss: 214650.667; Q90: 2.269; Q50: 3.385; q50: 3.385; q90: 1.807; MAPE: 343.368
-[15:25:07] Transformer.Utils: Checkpoint saved to experiments\test\epoch_0.pth.tar
-[15:25:19] Transformer.Utils: Best checkpoint copied to best.pth.tar
-[15:25:19] Transformer.Train: - Found new best Q90/Q50
+[14:32:14] Transformer.Train: Loading the datasets...
+[14:32:14] Transformer.Data: train_len: 20
+[14:32:14] Transformer.Data: building datasets from data\elect...
+[14:32:14] Transformer.Data: valid_len: 10
+[14:32:14] Transformer.Data: building datasets from data\elect...
+[14:32:14] Transformer.Data: test_len: 10
+[14:32:14] Transformer.Data: building datasets from data\elect...
+[14:32:14] Transformer.Train: Loading complete.
+[14:32:14] Transformer.Train: Starting training for 1 epoch(s)
+[14:32:14] Transformer.Train: begin training and evaluation
+[14:32:14] Transformer.Train: This Transformer have 44885698 paramerters in total
+[14:32:14] Transformer.Train: Epoch 1/1
+[14:33:32] Transformer.Train: G_loss: 31.282801310221355 ; D_loss: 0.7238582372665405
+[14:34:07] Transformer.Eval: - Full test metrics: ND: 2.999; RMSE: 41.600; test_loss: 190542.867; Q90: 5.398; Q50: 2.999; q50: 2.999; q90: 1.792; MAPE: 341.799

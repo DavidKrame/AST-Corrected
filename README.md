@@ -19,6 +19,9 @@ To run the training and see the behavior of the whole code before making any cha
 --model the position of the specific params.json file under the folder of "experiments".  
 In general, you can do for exemple :  
 ` python train_gan.py --dataset DATASET_NAME --model EXPERIMENTS_SUBDIR_CONTAINING_PARAMETERS_JSON `  
+After that, you can use the model by tape :  
+`python usage.py --usage-fig DIR_THAT_WILL_RECEIVE_RESULTS `  
+if you do not specify this parameter (the directory that will receive the results), it will be by default, `figures`. If that directory doesn't exist, il will automatically created.
 
 ## 4. Illustration (Training-output)
 Output should look like this... 
