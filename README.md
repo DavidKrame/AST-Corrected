@@ -26,3 +26,7 @@ if you do not specify this parameter (the directory that will receive the result
 ## 4. Illustration (Training-output)
 Output should look like this... 
 <img src="others/GithubVID1.gif">  
+
+## 5. More information about the installation and training specifications  
+To install pytorch properly, you may to visit : https://pytorch.org/get-started/locally/ .  
+To use `GPU`, you can for exemple replace `"cpu"` by `"cuda"` in `experiments/test/params.json` file (with the assumption that the machine used supports CUDA).
