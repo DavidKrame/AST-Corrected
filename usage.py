@@ -26,7 +26,7 @@ parser.add_argument('--restore-file', default='best',
                     help='Optional, name of the file in --model_dir containing weights to reload before \
                     training')  # 'best' or 'epoch_#'
 parser.add_argument('--usage-fig', default='figures',
-                    help='Dir that contain a model output figures. By default : root location')  # 'best' or 'epoch_#'
+                    help='Dir that contain a model output figures. By default : figures directory')  # 'best' or 'epoch_#'
 
 
 def usage(model, test_loader, params):
@@ -106,7 +106,6 @@ if __name__ == "__main__":
     logger.info('- done.')
 
     # print('model: ', model)
-    loss_fn = transformer.loss_fn
 
     logger.info('Starting usage')
 
