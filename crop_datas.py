@@ -2,18 +2,24 @@ import numpy as np
 import os
 
 dir = os.getcwd()
+if "\\" in dir:
+    prefix = "\\"
+elif "/" in dir:
+    prefix = "/"
+else:
+    prefix = ""
 
-dirTrain = "\\".join((dir, "data", "elect", "train_data_elect.npy"))
-dirTrainLab = "\\".join((dir, "data", "elect", "train_label_elect.npy"))
-dirTrainV = "\\".join((dir, "data", "elect", "train_v_elect.npy"))
+dirTrain = prefix.join((dir, "data", "elect", "train_data_elect.npy"))
+dirTrainLab = prefix.join((dir, "data", "elect", "train_label_elect.npy"))
+dirTrainV = prefix.join((dir, "data", "elect", "train_v_elect.npy"))
 
-dirTest = "\\".join((dir, "data", "elect", "test_data_elect.npy"))
-dirTestLab = "\\".join((dir, "data", "elect", "test_label_elect.npy"))
-dirTestV = "\\".join((dir, "data", "elect", "test_v_elect.npy"))
+dirTest = prefix.join((dir, "data", "elect", "test_data_elect.npy"))
+dirTestLab = prefix.join((dir, "data", "elect", "test_label_elect.npy"))
+dirTestV = prefix.join((dir, "data", "elect", "test_v_elect.npy"))
 
-dirValid = "\\".join((dir, "data", "elect", "valid_data_elect.npy"))
-dirValidLab = "\\".join((dir, "data", "elect", "valid_label_elect.npy"))
-dirValidV = "\\".join((dir, "data", "elect", "valid_v_elect.npy"))
+dirValid = prefix.join((dir, "data", "elect", "valid_data_elect.npy"))
+dirValidLab = prefix.join((dir, "data", "elect", "valid_label_elect.npy"))
+dirValidV = prefix.join((dir, "data", "elect", "valid_v_elect.npy"))
 
 outTrain = np.load(dirTrain)
 outTrainLab = np.load(dirTrainLab)
