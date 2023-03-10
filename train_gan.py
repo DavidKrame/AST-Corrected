@@ -102,8 +102,9 @@ def train(model: nn.Module,
             # Train the generator
             # -------------------------------------------------------------------
             optimizer_G.zero_grad()
-            loss = transformer.loss_quantile(q50, labels, torch.tensor(
-                0.5)) + float(params.learning_rate) * adversarial_loss(discriminator(fake_input), valid)
+            loss = transformer.loss_quantile(q50.to(params.device), labels.to(params.device), torch.tensor(
+                0.5).to(params.device)).to(params.device) + torch.tensor(params.learning_rate).to(params.device) * adversarial_loss(discriminator(fake_input).to(params.device), valid.to(params.device)).to(params.device)
+
             loss.backward()
             optimizer_G.step()
             g_loss = loss.item() / params.train_window
@@ -113,9 +114,10 @@ def train(model: nn.Module,
             # Train the discriminator
             # -------------------------------------------------------------------
             optimizer_D.zero_grad()
-            real_loss = adversarial_loss(discriminator(labels_batch), valid)
+            real_loss = adversarial_loss(discriminator(labels_batch).to(
+                params.device), valid.to(params.device))
             fake_loss = adversarial_loss(
-                discriminator(fake_input.detach()), fake)
+                discriminator(fake_input.detach().to(params.device)).to(params.device), fake.to(params.device))
             loss_d = 0.5*(real_loss + fake_loss)
             loss_d.backward()
             optimizer_D.step()
@@ -192,7 +194,7 @@ def train_and_evaluate(model: nn.Module,
         # loss_test[epoch * test_len:(epoch + 1) *
         #           test_len] = test_metrics['loss'].cpu()
         loss_test[epoch * test_len:(epoch + 1) *
-                  test_len] = torch.Tensor([test_metrics['q50']]).to(params.device)
+                  test_len] = torch.Tensor([test_metrics['q50']]).to(params.device).cpu()
 
         q50_valid[epoch] = valid_metrics['q50']
         q90_valid[epoch] = valid_metrics['q90']

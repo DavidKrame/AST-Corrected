@@ -414,13 +414,14 @@ def test(model, params, x, v_batch, id_batch):
 def loss_quantile(mu: Variable, labels: Variable, quantile: Variable):
     # Here, I implemente a loss without division(KRM). I follow a definition who
     # can be retrieve in the 14th article in AST article.
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     loss = 0
     for i in range(mu.shape[1]):
-        mu_e = mu[:, i]
-        labels_e = labels[:, i]
+        mu_e = mu[:, i].to(device)
+        labels_e = labels[:, i].to(device)
 
-        I = (labels_e <= mu_e).float()
-        ones = torch.Tensor(size=I.shape)
+        I = (labels_e <= mu_e).float().to(device)
+        ones = torch.Tensor(size=I.shape).to(device)
         for i in range(len(I)):
             ones[i] = 1
 
@@ -503,17 +504,18 @@ def accuracy_ROU(rou: float, mu: torch.Tensor, labels: torch.Tensor, relative=Fa
 def quantile_loss(quantile: float, mu: torch.Tensor, labels: torch.Tensor):
     # Now we implemente the complete quantile _loss function (with division like in
     # the 14th AST's article)
-
-    I = (labels <= mu).float()
-    ones = torch.Tensor(size=I.shape)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    I = (labels <= mu).float().to(device)
+    ones = torch.Tensor(size=I.shape).to(device)
     for i in range(len(I)):
         ones[i] = 1
 
-    diff = 2*(torch.sum((quantile*ones - I)*(labels-mu))).item()
+    diff = 2*(torch.sum((quantile*ones - I)
+              * (labels-mu).to(device))).item()
 
     # diff = 2*(torch.sum(quantile*((labels-mu)*I) +
     #           (1-quantile) * (mu-labels)*(1-I))).item()
-    denom = torch.sum(torch.abs(labels)).item()
+    denom = torch.sum(torch.abs(labels.to(device))).item()
     q_loss = diff/denom
     return q_loss
 

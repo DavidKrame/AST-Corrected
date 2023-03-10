@@ -342,7 +342,7 @@ def update_metrics(raw_metrics, sample_mu, labels, predict_start, samples=None, 
         sample_mu, labels[:, predict_start:], relative=relative)
     input_time_steps = sample_mu.numel()
     raw_metrics['test_loss'] = raw_metrics['test_loss'] + [
-        transformer.loss_quantile(sample_mu, labels, 0.5) * input_time_steps, input_time_steps]
+        transformer.loss_quantile(sample_mu, labels, 0.5).cpu() * input_time_steps, input_time_steps]
     raw_metrics['Q90'] = raw_metrics['Q90'] + transformer.accuracy_ROU(
         0.9, sample_mu, labels[:, predict_start:], relative=relative)
     raw_metrics['Q50'] = raw_metrics['Q50'] + transformer.accuracy_ROU(
