@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import shutil
 
 dir = os.getcwd()
 if "\\" in dir:
@@ -40,15 +41,25 @@ print(f'TRAIN-LABELS : {outTrainLab.shape}')
 print(f'TRAIN-V : {outTrainV.shape}')
 print(outTrainV)
 
+try:
+    shutil.rmtree("Crop_datas")
+except FileNotFoundError:
+    pass
+# create missing directories
+try:
+    os.mkdir("Crop_datas")
+except FileExistsError:
+    pass
+
 # Crop training data
-np.save('train_data_elect.npy', outTrain[:20, :, :])
-np.save('train_label_elect.npy', outTrainLab[:20, :])
-np.save('train_v_elect.npy', outTrainV[:20, :])
+np.save('Crop_datas'+prefix+'train_data_elect.npy', outTrain[:3000, :, :])
+np.save('Crop_datas'+prefix+'train_label_elect1.npy', outTrainLab[:3000, :])
+np.save('Crop_datas'+prefix+'train_v_elect.npy', outTrainV[:3000, :])
 # Crop testing data
-np.save('test_data_elect1.npy', outTest[:10, :, :])
-np.save('test_label_elect1.npy', outTestLab[:10, :])
-np.save('test_v_elect1.npy', outTestV[:10, :])
+np.save('Crop_datas'+prefix+'test_data_elect.npy', outTest[:800, :, :])
+np.save('Crop_datas'+prefix+'test_label_elect.npy', outTestLab[:800, :])
+np.save('Crop_datas'+prefix+'test_v_elect.npy', outTestV[:800, :])
 # Crop validation data
-np.save('valid_data_elect1.npy', outValid[:10, :, :])
-np.save('valid_label_elect1.npy', outValidLab[:10, :])
-np.save('valid_v_elect1.npy', outValidV[:10, :])
+np.save('Crop_datas'+prefix+'valid_data_elect.npy', outValid[:800, :, :])
+np.save('Crop_datas'+prefix+'valid_label_elect.npy', outValidLab[:800, :])
+np.save('Crop_datas'+prefix+'valid_v_elect.npy', outValidV[:800, :])
