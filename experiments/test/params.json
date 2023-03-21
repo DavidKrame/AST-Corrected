@@ -27,5 +27,6 @@
 "sampling" : "True",
 "test_predict_start" : 0,
 "relative_metrics" : "False",
+"seed" : 42,
 "ngpu" : 0
 }

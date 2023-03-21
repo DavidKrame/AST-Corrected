@@ -1,14 +1,12 @@
-[14:32:14] Transformer.Train: Loading the datasets...
-[14:32:14] Transformer.Data: train_len: 20
-[14:32:14] Transformer.Data: building datasets from data\elect...
-[14:32:14] Transformer.Data: valid_len: 10
-[14:32:14] Transformer.Data: building datasets from data\elect...
-[14:32:14] Transformer.Data: test_len: 10
-[14:32:14] Transformer.Data: building datasets from data\elect...
-[14:32:14] Transformer.Train: Loading complete.
-[14:32:14] Transformer.Train: Starting training for 1 epoch(s)
-[14:32:14] Transformer.Train: begin training and evaluation
-[14:32:14] Transformer.Train: This Transformer have 44885698 paramerters in total
-[14:32:14] Transformer.Train: Epoch 1/1
-[14:33:32] Transformer.Train: G_loss: 31.282801310221355 ; D_loss: 0.7238582372665405
-[14:34:07] Transformer.Eval: - Full test metrics: ND: 2.999; RMSE: 41.600; test_loss: 190542.867; Q90: 5.398; Q50: 2.999; q50: 2.999; q90: 1.792; MAPE: 341.799
+[17:46:21] Transformer.Train: Loading the datasets...
+[17:46:21] Transformer.Data: train_len: 320
+[17:46:21] Transformer.Data: building datasets from data\elect...
+[17:46:21] Transformer.Data: valid_len: 80
+[17:46:22] Transformer.Data: building datasets from data\elect...
+[17:46:22] Transformer.Data: test_len: 80
+[17:46:22] Transformer.Data: building datasets from data\elect...
+[17:46:22] Transformer.Train: Loading complete.
+[17:46:22] Transformer.Train: Starting training for 1 epoch(s)
+[17:46:22] Transformer.Train: begin training and evaluation
+[17:46:22] Transformer.Train: This Transformer have 44885698 paramerters in total
+[17:46:22] Transformer.Train: Epoch 1/1

@@ -6,6 +6,7 @@ import argparse
 import copy
 import matplotlib.pyplot as plt
 from torch.utils.data.sampler import RandomSampler
+import shutil
 
 import torch
 
@@ -65,6 +66,7 @@ def usage(model, test_loader, params):
 
 
 if __name__ == "__main__":
+
     # Load the parameters
     args = parser.parse_args()
     model_dir = os.path.join('experiments', args.model_name)
@@ -73,6 +75,7 @@ if __name__ == "__main__":
     assert os.path.isfile(
         json_path), 'No json configuration file found at {}'.format(json_path)
     params = utils.Params(json_path)
+    SEED = params.seed
 
     cuda_exist = torch.cuda.is_available()  # use GPU is available
 
@@ -81,6 +84,8 @@ if __name__ == "__main__":
     params.device = torch.device(
         "cuda:0" if torch.cuda.is_available() else "cpu")
     # torch.cuda.manual_seed(240)
+    torch.manual_seed(SEED)
+
     logger.info('Using Cuda...')
 
     c = copy.deepcopy
@@ -115,6 +120,11 @@ if __name__ == "__main__":
 
     sum_mu, sum_q90, true = usage(model, test_loader, params)
 
+    try:
+        shutil.rmtree(args.usage_fig)
+    except FileNotFoundError:
+        pass
+
     # create missing directories
     try:
         os.mkdir(args.usage_fig)
@@ -122,11 +132,14 @@ if __name__ == "__main__":
         pass
 
     """NOTE : You can decrease a predict_steps in params.json (/experiments/test)"""
+    # torch.cuda.manual_seed(240)
+    torch.manual_seed(SEED)
+
     for k in range(true.shape[0]):
         save_fig_location = os.path.join(args.usage_fig, f"test{k+1}.png")
         # Data for plotting
         labels = true[k, :]
-        predictions = sum_mu[k, :]
+        predictions = sum_q90[k, :]
         t = np.arange(len(predictions))
 
         plt.figure(k)

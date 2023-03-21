@@ -52,14 +52,14 @@ except FileExistsError:
     pass
 
 # Crop training data
-np.save('Crop_datas'+prefix+'train_data_elect.npy', outTrain[:3000, :, :])
-np.save('Crop_datas'+prefix+'train_label_elect1.npy', outTrainLab[:3000, :])
-np.save('Crop_datas'+prefix+'train_v_elect.npy', outTrainV[:3000, :])
+np.save('Crop_datas'+prefix+'train_data_elect.npy', outTrain[:320, :, :])
+np.save('Crop_datas'+prefix+'train_label_elect.npy', outTrainLab[:320, :])
+np.save('Crop_datas'+prefix+'train_v_elect.npy', outTrainV[:320, :])
 # Crop testing data
-np.save('Crop_datas'+prefix+'test_data_elect.npy', outTest[:800, :, :])
-np.save('Crop_datas'+prefix+'test_label_elect.npy', outTestLab[:800, :])
-np.save('Crop_datas'+prefix+'test_v_elect.npy', outTestV[:800, :])
+np.save('Crop_datas'+prefix+'test_data_elect.npy', outTest[:80, :, :])
+np.save('Crop_datas'+prefix+'test_label_elect.npy', outTestLab[:80, :])
+np.save('Crop_datas'+prefix+'test_v_elect.npy', outTestV[:80, :])
 # Crop validation data
-np.save('Crop_datas'+prefix+'valid_data_elect.npy', outValid[:800, :, :])
-np.save('Crop_datas'+prefix+'valid_label_elect.npy', outValidLab[:800, :])
-np.save('Crop_datas'+prefix+'valid_v_elect.npy', outValidV[:800, :])
+np.save('Crop_datas'+prefix+'valid_data_elect.npy', outValid[:80, :, :])
+np.save('Crop_datas'+prefix+'valid_label_elect.npy', outValidLab[:80, :])
+np.save('Crop_datas'+prefix+'valid_v_elect.npy', outValidV[:80, :])
